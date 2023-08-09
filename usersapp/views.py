@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import *
 from .serializers import UsersSerializers
+from django.contrib.auth.models import User
 
 
 class UsersList(generics.ListAPIView):
