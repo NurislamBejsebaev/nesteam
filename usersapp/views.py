@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import generics
 from .serializers import UsersSerializers
 from django.contrib.auth.models import User
@@ -9,3 +8,6 @@ class UsersList(generics.ListAPIView):
     serializer_class = UsersSerializers
 
 
+class UsersDetail(generics.RetrieveAPIView):
+    serializer_class = UsersSerializers
+    queryset = User.objects.all()

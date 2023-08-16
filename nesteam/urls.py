@@ -1,11 +1,15 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from games.views import *
-from usersapp.views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'genre', GenreViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('games/', GameList.as_view(), name='games-list'),
-    path('studios/', StudioList.as_view(), name='studio-list'),
-    path('users/', UsersList.as_view(), name='users-list'),
+    path('games/', include('games.urls')),
+    path('studios/', include('games.urls')),
+    path('users/', include('usersapp.urls')),
+    path('', include(router.urls)),
 ]
