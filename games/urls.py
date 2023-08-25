@@ -1,13 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from games.views import *
+from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register(r'api-studio', StudioViewSet)
 
 urlpatterns = [
-    # path('list/', GameList.as_view(), name='games-list'),
-    # path('create/', GameCreate.as_view(), name='games-create'),
-    # path('update/<int:pk>/', GameUpdate.as_view(), name='games-update'),
-    # path('detail/<int:pk>/', GameDetail.as_view(), name='games-detail'),
-    path('list/', StudioList.as_view(), name='studio-list'),
-    path('create/', StudioCreate.as_view(), name='studio-create'),
+    path('create/', GameCreateAPIView.as_view(), name='games-create'),
+    path('studio-router/', include(router.urls)),
 ]
 
