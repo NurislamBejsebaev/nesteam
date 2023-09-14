@@ -9,7 +9,7 @@ router.register(r'genre', GenreViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('games/', include('games.urls')),
-    path('studios/', include('games.urls')),
     path('users/', include('usersapp.urls')),
+    path('collections/', include('collection.urls')),
     path('', include(router.urls)),
 ]

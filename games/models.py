@@ -15,7 +15,7 @@ class Game(models.Model):
         null=True,
     )
     studio = models.ForeignKey(
-        to='studio',
+        to='Studio',
         on_delete=models.PROTECT,
         null=True,
         blank=False,
@@ -32,3 +32,4 @@ class Studio(models.Model):
 
     def __str__(self):
         return self.name
+
