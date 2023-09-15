@@ -1,6 +1,8 @@
-from rest_framework import generics
+from rest_framework.generics import *
 from .serializers import *
 from rest_framework.viewsets import *
+from .models import *
+from .filters import PlayerFilter
 from django.contrib.auth.models import User
 
 
@@ -18,4 +20,9 @@ class UserViewSet(ModelViewSet):
     queryset = User.objects.filter(is_active=True)
     serializer_class = UsersSerializers
 
+
+class PlayerListAPIView(ListAPIView):
+    queryset = Player.objects.all()
+    serializer_class = PlayerSerializer
+    filterset_class = PlayerFilter
 
