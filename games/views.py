@@ -2,7 +2,7 @@ from .serializers import *
 from .models import *
 from rest_framework.viewsets import *
 from rest_framework.generics import *
-
+from rest_framework import filters
 
 class GamesView(RetrieveUpdateAPIView):
     queryset = Game.objects.all()
@@ -17,6 +17,9 @@ class GenreViewSet(ModelViewSet):
 class CreateGamesAPIView(ListCreateAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name']
+
 
 
 class StudiosListAPIView(ListAPIView):
