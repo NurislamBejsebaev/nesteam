@@ -3,6 +3,8 @@ from .models import *
 from rest_framework.viewsets import *
 from rest_framework.generics import *
 from rest_framework import filters
+from rest_framework.permissions import IsAuthenticated
+
 
 class GamesView(RetrieveUpdateAPIView):
     queryset = Game.objects.all()
@@ -22,7 +24,11 @@ class CreateGamesAPIView(ListCreateAPIView):
 
 
 
+
+
 class StudiosListAPIView(ListAPIView):
     queryset = Studio.objects.all()
     serializer_class = StudioSerializer
+    permission_classes = [IsAuthenticated]
+
 
