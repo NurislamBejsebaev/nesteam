@@ -10,6 +10,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('games/', include('games.urls')),
     path('users/', include('usersapp.urls')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.jwt')),
     path('collections/', include('collection.urls')),
     path('', include(router.urls)),
 ]

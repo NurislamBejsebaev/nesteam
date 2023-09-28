@@ -23,10 +23,7 @@ class CreateGamesAPIView(ListCreateAPIView):
     search_fields = ['name']
 
 
-
-
-
-class StudiosListAPIView(ListAPIView):
+class StudiosViewSet(ModelViewSet):
     queryset = Studio.objects.all()
     serializer_class = StudioSerializer
     permission_classes = [IsAuthenticated]
